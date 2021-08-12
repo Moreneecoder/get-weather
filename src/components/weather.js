@@ -53,7 +53,7 @@ const displayWeather = (response) => {
   document.querySelector('#wind-speed').textContent = `${weather.windSpeed} km/h`;
   document.querySelector('#weather-icon').src = weather.iconurl;
   document.querySelector('#temp').textContent = `${weather.temp}`;
-  document.querySelector('#unit').textContent = `°c`;
+  document.querySelector('#unit').textContent = '°c';
   document.querySelector('#latitude').textContent = weather.latitude;
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
@@ -67,24 +67,24 @@ const displayWeather = (response) => {
 };
 
 const toFahrenheit = () => {
-    let temp = document.querySelector('#temp').textContent
-    document.querySelector('#temp').textContent = ((parseFloat(temp) * (9/5)) + 32).toFixed(2)
-    document.querySelector('#unit').textContent = `°f`;
-}
+  const temp = document.querySelector('#temp').textContent;
+  document.querySelector('#temp').textContent = ((parseFloat(temp) * (9 / 5)) + 32).toFixed(2);
+  document.querySelector('#unit').textContent = '°f';
+};
 
 const toCelsius = () => {
-    let temp = document.querySelector('#temp').textContent
-    document.querySelector('#temp').textContent = ((parseFloat(temp) - 32) * 5/9).toFixed(2)
-    document.querySelector('#unit').textContent = `°c`;
-}
+  const temp = document.querySelector('#temp').textContent;
+  document.querySelector('#temp').textContent = ((parseFloat(temp) - 32) * (5 / 9)).toFixed(2);
+  document.querySelector('#unit').textContent = '°c';
+};
 
 const convertTempUnit = (switchCheck) => {
-    if(switchCheck.checked){
-        toFahrenheit();
-        return
-    }
+  if (switchCheck.checked) {
+    toFahrenheit();
+    return;
+  }
 
-    toCelsius();
-}
+  toCelsius();
+};
 
 export { getWeather, displayWeather, convertTempUnit };

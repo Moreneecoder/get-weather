@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const switchCheck = document.querySelector('#switch');
 
   switchCheck.addEventListener('click', () => {
-    convertTempUnit(switchCheck)
+    convertTempUnit(switchCheck);
   });
-
 });
