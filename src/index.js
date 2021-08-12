@@ -4,7 +4,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/modal';
 import './assets/images/sheyi-lagos.jpg';
-import { getWeather, displayWeather } from './components/weather';
+import { getWeather, displayWeather, convertTempUnit } from './components/weather';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('default-bg');
@@ -24,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const switchCheck = document.querySelector('#switch');
 
   switchCheck.addEventListener('click', () => {
-    if(switchCheck.checked){
-        convertToFahrenheit()
-    }
+    convertTempUnit(switchCheck)
   });
 
 });

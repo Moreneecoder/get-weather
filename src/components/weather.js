@@ -66,4 +66,19 @@ const displayWeather = (response) => {
   errorMsg.style.display = 'none';
 };
 
-export { getWeather, displayWeather };
+const toFahrenheit = () => {
+    let temp = document.querySelector('#temp').textContent
+    document.querySelector('#temp').textContent = (parseFloat(temp) * (9/5)) + 32
+    document.querySelector('#unit').textContent = `°f`;
+}
+
+const convertTempUnit = (switchCheck) => {
+    if(switchCheck.checked){
+        toFahrenheit();
+        return
+    }
+
+    toCelsius();
+}
+
+export { getWeather, displayWeather, convertTempUnit };
