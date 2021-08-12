@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.querySelector('#main');
   mainContent.classList.add('default-bg');
 
-  getWeather().then(res => displayWeather(res));
+  getWeather().then((res) => displayWeather(res));
 });

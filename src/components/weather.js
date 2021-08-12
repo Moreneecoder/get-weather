@@ -1,4 +1,4 @@
-import {startTime, displayDate} from "./time";
+import { startTime, displayDate } from './time';
 
 const getWeather = async (location = 'Loburo') => {
   let data;
@@ -26,15 +26,15 @@ const weatherFormatted = (response) => {
     cityTimeZone: parseInt(response.timezone, 10),
     latitude: response.coord.lat,
     longitude: response.coord.lon,
-    windSpeed: response.wind.speed,    
+    windSpeed: response.wind.speed,
   });
 };
 
 const displayWeather = (response) => {
   const errorMsg = document.querySelector('#error-message');
 
-  if (response.cod === '404') {    
-    errorMsg.textContent = "CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT";
+  if (response.cod === '404') {
+    errorMsg.textContent = 'CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT';
     errorMsg.style.display = 'block';
     return;
   }
@@ -49,8 +49,8 @@ const displayWeather = (response) => {
   document.querySelector('#latitude').textContent = weather.latitude;
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
-  startTime()
-  displayDate()
+  startTime();
+  displayDate();
 
   errorMsg.style.display = 'none';
 };
