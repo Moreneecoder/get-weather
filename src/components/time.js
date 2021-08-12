@@ -21,4 +21,17 @@ const startTime = () => {
     var t = setTimeout(startTime, 500);
 }
 
-export default startTime
+const displayDate = () => {
+    const days = ['Monday', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+
+    var months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "Sept", "October", "November", "December"
+    ];
+
+    var today = new Date();    
+    var date = `${days[today.getDay() - 1]}, ${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+    document.getElementById('date-display').innerHTML = date;
+}
+
+export {startTime, displayDate}

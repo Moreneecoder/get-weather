@@ -1,4 +1,4 @@
-import startTime from "./time";
+import {startTime, displayDate} from "./time";
 
 const getWeather = async (location = 'Loburo') => {
   let data;
@@ -50,6 +50,7 @@ const displayWeather = (response) => {
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
   startTime()
+  displayDate()
 
   errorMsg.style.display = 'none';
 };
