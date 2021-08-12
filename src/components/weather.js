@@ -68,8 +68,14 @@ const displayWeather = (response) => {
 
 const toFahrenheit = () => {
     let temp = document.querySelector('#temp').textContent
-    document.querySelector('#temp').textContent = (parseFloat(temp) * (9/5)) + 32
+    document.querySelector('#temp').textContent = ((parseFloat(temp) * (9/5)) + 32).toFixed(2)
     document.querySelector('#unit').textContent = `°f`;
+}
+
+const toCelsius = () => {
+    let temp = document.querySelector('#temp').textContent
+    document.querySelector('#temp').textContent = ((parseFloat(temp) - 32) * 5/9).toFixed(2)
+    document.querySelector('#unit').textContent = `°c`;
 }
 
 const convertTempUnit = (switchCheck) => {
