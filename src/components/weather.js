@@ -1,4 +1,5 @@
 import { startTime, displayDate } from './time';
+import getRandomImg from './image';
 
 const getWeather = async (location = 'Loburo') => {
   let data;
@@ -20,6 +21,7 @@ const weatherFormatted = (response) => {
     city: response.name,
     country: response.sys.country,
     temp: response.main.temp,
+    main: response.weather[0].main,
     desc: response.weather[0].description,
     iconurl: `http://openweathermap.org/img/w/${iconCode}.png`,
     cityTimeStamp: parseInt(response.dt, 10),
@@ -29,6 +31,11 @@ const weatherFormatted = (response) => {
     windSpeed: response.wind.speed,
   });
 };
+
+const updateBg = (weather) => {
+  let img = getRandomImg(weather.main)
+  document.body.style.backgroundImage = `url(${img})`;
+}
 
 const displayWeather = (response) => {
   const errorMsg = document.querySelector('#error-message');
@@ -49,8 +56,11 @@ const displayWeather = (response) => {
   document.querySelector('#latitude').textContent = weather.latitude;
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
+
   startTime();
+  startTime(weather.cityTimeZone, 'local-time');
   displayDate();
+  updateBg(weather);
 
   errorMsg.style.display = 'none';
 };

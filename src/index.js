@@ -7,17 +7,18 @@ import './assets/images/sheyi-lagos.jpg';
 import { getWeather, displayWeather } from './components/weather';
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   document.body.classList.add('default-bg');
 
   getWeather().then((res) => displayWeather(res));
 
-  const weatherForm = document.querySelector('#weather-form');
+  const weatherForm = document.querySelector('#weather-form')
 
   weatherForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    const city = document.querySelector('#city-name').value;
-    getWeather(city).then((res) => displayWeather(res));
-    weatherForm.reset();
-  });
+      const city = document.querySelector('#city-name').value;
+      getWeather(city).then((res) => displayWeather(res));
+      weatherForm.reset();
+  })
 });

@@ -3,17 +3,21 @@ const checkTime = (i) => {
   return i;
 };
 
-// const getLocalTime = (timezone) => {
-//     let d = new Date()
-//     let localTime = d.getTime()
-//     let localOffset = d.getTimezoneOffset() * 60000
-//     let utc = localTime + localOffset
-//     let cityTimeStamp = utc + (1000 * timezone)
-//     let today = new Date((cityTimeStamp))
-// }
+const getLocalTime = (timezone) => {
+    let d = new Date()
+    let localTime = d.getTime()
+    let localOffset = d.getTimezoneOffset() * 60000
+    let utc = localTime + localOffset
+    let cityTimeStamp = utc + (1000 * timezone)
+    return new Date((cityTimeStamp))
+}
 
-const startTime = () => {
-  const today = new Date();
+const startTime = (timezone = null, domTarget = 'time') => {
+  let today = new Date();
+  if (timezone){
+    today = getLocalTime(timezone)
+  }
+
   const h = today.getHours();
   let m = today.getMinutes();
   let s = today.getSeconds();
@@ -25,7 +29,7 @@ const startTime = () => {
     timeType = 'AM';
   }
 
-  document.getElementById('time').innerHTML = `${h}:${m}:${s} ${timeType}`;
+  document.getElementById(domTarget).innerHTML = `${h}:${m}:${s} ${timeType}`;
   setInterval(startTime, 500);
 };
 
