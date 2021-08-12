@@ -1,4 +1,6 @@
-const getWeather = async (location = 'Ojuelegba') => {
+import startTime from "./time";
+
+const getWeather = async (location = 'Loburo') => {
   let data;
   try {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=a724f51917c1f090a2c33698937540c3`;
@@ -24,14 +26,16 @@ const weatherFormatted = (response) => {
     cityTimeZone: parseInt(response.timezone, 10),
     latitude: response.coord.lat,
     longitude: response.coord.lon,
-    windSpeed: response.wind.speed,
+    windSpeed: response.wind.speed,    
   });
 };
 
 const displayWeather = (response) => {
-  if (response.cod === '404') {
-    // $('#error-message').text("CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT").show();
-    console.log('CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT');
+  const errorMsg = document.querySelector('#error-message');
+
+  if (response.cod === '404') {    
+    errorMsg.textContent = "CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT";
+    errorMsg.style.display = 'block';
     return;
   }
 
@@ -45,6 +49,9 @@ const displayWeather = (response) => {
   document.querySelector('#latitude').textContent = weather.latitude;
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
+  startTime()
+
+  errorMsg.style.display = 'none';
 };
 
 export { getWeather, displayWeather };
