@@ -1,16 +1,50 @@
-const getWeather = async (location = 'Mowe') => {
-    try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=a724f51917c1f090a2c33698937540c3`;
-        const response = await fetch(url)
-        const data = await response.json()
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
-}
+const getWeather = async (location = 'Ojuelegba') => {
+  let data;
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=a724f51917c1f090a2c33698937540c3`;
+    const response = await fetch(url);
+    data = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 
-const loadWeather = res => {
-    
-}
+  return data;
+};
 
-export default getWeather
+const weatherFormatted = (response) => {
+  const iconCode = response.weather[0].icon;
+
+  return ({
+    city: response.name,
+    country: response.sys.country,
+    temp: response.main.temp,
+    desc: response.weather[0].description,
+    iconurl: `http://openweathermap.org/img/w/${iconCode}.png`,
+    cityTimeStamp: parseInt(response.dt, 10),
+    cityTimeZone: parseInt(response.timezone, 10),
+    latitude: response.coord.lat,
+    longitude: response.coord.lon,
+    windSpeed: response.wind.speed,
+  });
+};
+
+const displayWeather = (response) => {
+  if (response.cod === '404') {
+    // $('#error-message').text("CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT").show();
+    console.log('CITY NOT FOUND. PLEASE CROSSCHECK YOUR INPUT');
+    return;
+  }
+
+  const weather = weatherFormatted(response);
+
+  document.querySelector('#location').textContent = `${weather.city}, ${weather.country}`;
+  document.querySelector('#weather-desc').textContent = weather.desc.toUpperCase();
+  document.querySelector('#wind-speed').textContent = `${weather.windSpeed} km/h`;
+  document.querySelector('#weather-icon').src = weather.iconurl;
+  document.querySelector('#temp').textContent = `${weather.temp}°c`;
+  document.querySelector('#latitude').textContent = weather.latitude;
+  document.querySelector('#longitude').textContent = weather.longitude;
+  document.querySelector('#time-city').textContent = `${weather.city} Time`;
+};
+
+export { getWeather, displayWeather };
