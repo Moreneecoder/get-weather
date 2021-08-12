@@ -20,4 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     getWeather(city).then((res) => displayWeather(res));
     weatherForm.reset();
   });
+
+  const switchCheck = document.querySelector('#switch');
+
+  switchCheck.addEventListener('click', () => {
+    if(switchCheck.checked){
+        convertToFahrenheit()
+    }
+  });
+
 });
