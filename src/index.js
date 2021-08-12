@@ -11,4 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.classList.add('default-bg');
 
   getWeather().then((res) => displayWeather(res));
+
+  const weatherForm = document.querySelector('#weather-form')
+
+  weatherForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const city = document.querySelector('#city-name').value;
+      getWeather(city).then((res) => displayWeather(res));
+      weatherForm.reset();
+  })
 });

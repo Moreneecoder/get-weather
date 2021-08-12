@@ -3,6 +3,15 @@ const checkTime = (i) => {
   return i;
 };
 
+// const getLocalTime = (timezone) => {
+//     let d = new Date()
+//     let localTime = d.getTime()
+//     let localOffset = d.getTimezoneOffset() * 60000
+//     let utc = localTime + localOffset
+//     let cityTimeStamp = utc + (1000 * timezone)
+//     let today = new Date((cityTimeStamp))
+// }
+
 const startTime = () => {
   const today = new Date();
   const h = today.getHours();
