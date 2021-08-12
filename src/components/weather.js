@@ -33,9 +33,9 @@ const weatherFormatted = (response) => {
 };
 
 const updateBg = (weather) => {
-  let img = getRandomImg(weather.main)
+  const img = getRandomImg(weather.main);
   document.body.style.backgroundImage = `url(${img})`;
-}
+};
 
 const displayWeather = (response) => {
   const errorMsg = document.querySelector('#error-message');

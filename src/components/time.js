@@ -4,18 +4,18 @@ const checkTime = (i) => {
 };
 
 const getLocalTime = (timezone) => {
-    let d = new Date()
-    let localTime = d.getTime()
-    let localOffset = d.getTimezoneOffset() * 60000
-    let utc = localTime + localOffset
-    let cityTimeStamp = utc + (1000 * timezone)
-    return new Date((cityTimeStamp))
-}
+  const d = new Date();
+  const localTime = d.getTime();
+  const localOffset = d.getTimezoneOffset() * 60000;
+  const utc = localTime + localOffset;
+  const cityTimeStamp = utc + (1000 * timezone);
+  return new Date((cityTimeStamp));
+};
 
 const startTime = (timezone = null, domTarget = 'time') => {
   let today = new Date();
-  if (timezone){
-    today = getLocalTime(timezone)
+  if (timezone) {
+    today = getLocalTime(timezone);
   }
 
   const h = today.getHours();
