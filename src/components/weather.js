@@ -62,6 +62,7 @@ const displayWeather = (response) => {
   startTime(weather.cityTimeZone, 'local-time');
   displayDate();
   updateBg(weather);
+  document.querySelector('#switch').checked = null
 
   errorMsg.style.display = 'none';
 };
