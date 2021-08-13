@@ -28,7 +28,7 @@ To do this, follow the simple steps below:
 * Create an account
 * Click on your username on the far-right of the navbar
 * Click on API keys and use your default key
-* Use API in the application
+* In your local version of the app, go to `weather.js` and replace the `YOUR_API_KEY` placeholder in the `getWeather` function with your API key.
 
 ### Set up
 * Open your terminal and navigate to the directory where you will like to clone this project into. E.g: `cd documents/projects`
