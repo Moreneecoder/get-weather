@@ -15,7 +15,7 @@ A frontend app for fetching weather reports around the world. Built with Javascr
 * OpenWeather API
 
 ## Live Demo
-* [taskHero](https://moreneecoder.github.io/get-weather/)
+* [getWeather](https://moreneecoder.github.io/get-weather/)
 
 ## Getting Started
 To setup a local version of this project on your machine, follow the short simple steps below and you'll be all set in no time.
