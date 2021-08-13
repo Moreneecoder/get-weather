@@ -1,5 +1,6 @@
 import { startTime, displayDate } from './time';
 import getRandomImg from './image';
+import { updateDom } from './domActions.js';
 
 const getWeather = async (location = 'Loburo') => {
   let data;
@@ -48,21 +49,12 @@ const displayWeather = (response) => {
 
   const weather = weatherFormatted(response);
 
-  document.querySelector('#location').textContent = `${weather.city}, ${weather.country}`;
-  document.querySelector('#weather-desc').textContent = weather.desc.toUpperCase();
-  document.querySelector('#wind-speed').textContent = `${weather.windSpeed} km/h`;
-  document.querySelector('#weather-icon').src = weather.iconurl;
-  document.querySelector('#temp').textContent = `${weather.temp}`;
-  document.querySelector('#unit').textContent = '°c';
-  document.querySelector('#latitude').textContent = weather.latitude;
-  document.querySelector('#longitude').textContent = weather.longitude;
-  document.querySelector('#time-city').textContent = `${weather.city} Time`;
+  updateDom(weather);
 
   startTime();
   startTime(weather.cityTimeZone, 'local-time');
   displayDate();
-  updateBg(weather);
-  document.querySelector('#switch').checked = null;
+  updateBg(weather);  
 
   errorMsg.style.display = 'none';
 };
