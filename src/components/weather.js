@@ -1,6 +1,6 @@
 import { startTime, displayDate } from './time';
 import getRandomImg from './image';
-import { updateDom } from './domActions.js';
+import { updateDom } from './domActions';
 
 const getWeather = async (location = 'Loburo') => {
   let data;
@@ -54,7 +54,7 @@ const displayWeather = (response) => {
   startTime();
   startTime(weather.cityTimeZone, 'local-time');
   displayDate();
-  updateBg(weather);  
+  updateBg(weather);
 
   errorMsg.style.display = 'none';
 };

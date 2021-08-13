@@ -9,9 +9,9 @@ const updateDom = (weather) => {
   document.querySelector('#longitude').textContent = weather.longitude;
   document.querySelector('#time-city').textContent = `${weather.city} Time`;
   document.querySelector('#switch').checked = null;
-}
+};
 
 const setDefaultBg = () => {
-    document.body.classList.add('default-bg');
-}
-export {updateDom, setDefaultBg}
+  document.body.classList.add('default-bg');
+};
+export { updateDom, setDefaultBg };

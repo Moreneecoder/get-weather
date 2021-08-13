@@ -5,10 +5,10 @@ import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/modal';
 import './assets/images/sheyi-lagos.jpg';
 import { getWeather, displayWeather, convertTempUnit } from './components/weather';
-import {setDefaultBg} from './components/domActions';
+import { setDefaultBg } from './components/domActions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  setDefaultBg()
+  setDefaultBg();
 
   getWeather().then((res) => displayWeather(res));
 
