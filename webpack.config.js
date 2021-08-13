@@ -1,7 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-const dotenv = require('dotenv')
-// require('dotenv').config({ path: './.env' }); 
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -18,9 +15,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       title: 'taskHero',
-    }),
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.config().parsed)
     }),
   ],
   output: {
