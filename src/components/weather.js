@@ -5,7 +5,7 @@ import { updateDom } from './domActions';
 const getWeather = async (location = 'Loburo') => {
   let data;
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=a724f51917c1f090a2c33698937540c3`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=YOUR_API_KEY`;
     const response = await fetch(url);
     data = await response.json();
   } catch (error) {
